@@ -2,8 +2,7 @@ var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-var ping = require('net-ping');
-var raw = require ("raw-socket");
+
 
 // If the line below is uncommented, the app.get-function is not called
 //app.use(express.static(__dirname)); 
