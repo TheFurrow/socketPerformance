@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+  <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+  <script> 
+	<!--var socket = io(); -->
+	
+	var socket = io.connect('127.0.0.1');
+
+setInterval(function() {
+  var startTime = Date.now();
+  socket.emit('ping');
+}, 2000);
+
+socket.on('pong', function() {
+  var startTime = Date.now();
+  latency = Date.now() - startTime;
+  document.getElementById('message').innerHTML += "<br />" + latency;
+});
+
+	</script>
+</head>
+<body>
+  <p id="message">Trying to connect websocket...</p>
+</body>
+</html>
